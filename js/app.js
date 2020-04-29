@@ -18,18 +18,33 @@
  const nav = document.querySelector("#navbar__list");
  const sections = document.getElementsByTagName('section');
  
+ 
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
-for(let i = 0; i < sections.length; i++){
-    let tabs = document.createElement('li');
-    tabs.innerHTML = sections[i].getAttribute('data-nav');
-    nav.appendChild(tabs);
+
+/* helper function to determine whether section is in viewport or not
+   https://gomakethings.com/how-to-test-if-an-element-is-in-the-viewport-with-vanilla-javascript/ --
+   Used link above for help
+*/
+    function isSectionActive(){
+    for(const section of sections){
+        const position = element.getBoundingClientRect();
+        if(
+            position.top >=0 && position.left >= 0 && 
+        position.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        position.right <= (window.innerWidth || document.documentElement.clientHeight)
+        ){
+            sections.classList.add("your-active-class");
+        }else{
+            sections.classList.remove("your-active-class");
+        }
+    }
+        
+    
 }
-
-
 
 /**
  * End Helper Functions
@@ -38,10 +53,16 @@ for(let i = 0; i < sections.length; i++){
 */
 
 // build the nav
-
+for(let i = 0; i < sections.length; i++){
+    let tabs = document.createElement('li');
+    tabs.innerHTML = sections[i].getAttribute('data-nav');
+    nav.appendChild(tabs);
+}
 
 // Add class 'active' to section when near top of viewport
-
+document.addEventListener('scroll', function(){
+    isSectionActive();
+});
 
 // Scroll to anchor ID using scrollTO event
 
