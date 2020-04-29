@@ -31,15 +31,21 @@
 */
     function isSectionActive(){
     for(const section of sections){
-        const position = element.getBoundingClientRect();
+        
+        const position = section.getBoundingClientRect();
         if(
             position.top >=0 && position.left >= 0 && 
         position.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        position.right <= (window.innerWidth || document.documentElement.clientHeight)
+        position.right <= (window.innerWidth || document.documentElement.clientWidth)
         ){
-            sections.classList.add("your-active-class");
+            const id = section.getAttribute("id");
+            document.querySelector('.${id}').classList.add("active");
+            section.classList.add("your-active-class");
+
         }else{
-            sections.classList.remove("your-active-class");
+            const id = section.getAttribute("id");
+            document.querySelector('.${id}').classList.remove("active");
+            section.classList.remove("your-active-class");
         }
     }
         
