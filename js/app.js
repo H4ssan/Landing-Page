@@ -34,17 +34,15 @@
         
         const position = section.getBoundingClientRect();
         if(
-            position.top >=0 && position.left >= 0 && 
-        position.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        position.right <= (window.innerWidth || document.documentElement.clientWidth)
+           position.top <= 150 && position.bottom >= 150
         ){
             const id = section.getAttribute("id");
-            document.querySelector('.${id}').classList.add("active");
+            document.querySelector(`.${id}`).classList.add("active");
             section.classList.add("your-active-class");
 
         }else{
             const id = section.getAttribute("id");
-            document.querySelector('.${id}').classList.remove("active");
+            document.querySelector(`.${id}`).classList.remove("active");
             section.classList.remove("your-active-class");
         }
     }
