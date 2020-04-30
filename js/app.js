@@ -25,10 +25,6 @@
  * 
 */
 
-/* helper function to determine whether section is in viewport or not
-   https://gomakethings.com/how-to-test-if-an-element-is-in-the-viewport-with-vanilla-javascript/ --
-   Used link above for help
-*/
     function isSectionActive(){
     for(const section of sections){
         
@@ -46,8 +42,17 @@
             section.classList.remove("your-active-class");
         }
     }
+}
+
+
+
+
+
+
+function scrollTo(){
+    document.addEventListener("click", function(){
         
-    
+    })
 }
 
 /**
@@ -58,9 +63,15 @@
 
 // build the nav
 for(let i = 0; i < sections.length; i++){
-    let tabs = document.createElement('li');
-    tabs.innerHTML = sections[i].getAttribute('data-nav');
-    nav.appendChild(tabs);
+    const tabs = document.createElement('li');
+    const anchor = document.createElement('a');
+
+    let tabText = sections[i].getAttribute('data-nav');
+    anchor.href = `#section${i+1}`;
+    anchor.innerText = tabText;
+    
+    tabs.appendChild(anchor);
+    nav.appendChild(tabs);    
 }
 
 // Add class 'active' to section when near top of viewport
@@ -69,6 +80,7 @@ document.addEventListener('scroll', function(){
 });
 
 // Scroll to anchor ID using scrollTO event
+
 
 
 /**
