@@ -45,16 +45,6 @@
 }
 
 
-
-
-
-
-function scrollTo(){
-    document.addEventListener("click", function(){
-        
-    })
-}
-
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -67,6 +57,7 @@ for(let i = 0; i < sections.length; i++){
     const anchor = document.createElement('a');
 
     let tabText = sections[i].getAttribute('data-nav');
+    tabs.classList.add(sections[i].getAttribute('id'));
     anchor.href = `#section${i+1}`;
     anchor.innerText = tabText;
     
@@ -79,7 +70,6 @@ document.addEventListener('scroll', function(){
     isSectionActive();
 });
 
-// Scroll to anchor ID using scrollTO event
 
 
 
