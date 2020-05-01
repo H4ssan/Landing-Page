@@ -1,32 +1,12 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
-
-
 // Define Global Variables
 const nav = document.querySelector("#navbar__list");
 const sections = document.getElementsByTagName('section');
+const header = document.getElementsByClassName("page__header")[0];
 
 
 
 
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
+//helper function - determines whether section is in view and should be highlighted or not
 function isSectionActive() {
     for (const section of sections) {
 
@@ -46,33 +26,32 @@ function isSectionActive() {
     }
 }
 
-const header = document.getElementsByClassName("page__header");
-//hide navabar when user stops scrolling
+
+//hide navebar when user stops scrolling
+ let timer = null;
+
 function isUserScrolling(){
-    let timer = null;
+   
     if(timer !== null){
         clearTimeout(timer);
     }
     timer = setTimeout(function(){
-    
-        header.style.display = 'none';
+        header.style.display = "none";
     }, 2000);
 }
 
 
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
 
-// build the nav
+
+/* build the navbar
+   creates <li> and <a> elements for the navabar*/
 for (let i = 0; i < sections.length; i++) {
     const tabs = document.createElement('li');
     const anchor = document.createElement('a');
-
+  
     let tabText = sections[i].getAttribute('data-nav');
     tabs.classList.add(sections[i].getAttribute('id'));
+    //when the <a> link is clicked it will lead to appropriate section
     anchor.href = `#section${i + 1}`;
     anchor.innerText = tabText;
 
@@ -80,29 +59,20 @@ for (let i = 0; i < sections.length; i++) {
     nav.appendChild(tabs);
 }
 
-// Add class 'active' to section when near top of viewport
+// When user scrolls this calls the isSectionActive function to determine which section is in viewport
 document.addEventListener('scroll', function () {
     isSectionActive();
 });
 
+
 document.addEventListener('scroll', function(){
     isUserScrolling();
 }, false);
+//navbar will reappear when scrolling starts again
+document.addEventListener('scroll', function(){
+    header.style.display = "block";
+})
 
 
-
-
-
-/**
- * End Main Functions
- * Begin Events
- *
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
 
 
