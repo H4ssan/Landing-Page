@@ -27,7 +27,7 @@ function isSectionActive() {
 }
 
 
-//hide navebar when user stops scrolling
+//hide nav bar when user stops scrolling
  let timer = null;
 
 function isUserScrolling(){
@@ -43,8 +43,8 @@ function isUserScrolling(){
 
 
 
-/* build the navbar
-   creates <li> and <a> elements for the navabar*/
+/* build the nav bar
+   creates <li> and <a> elements for the nav bar*/
 for (let i = 0; i < sections.length; i++) {
     const tabs = document.createElement('li');
     const anchor = document.createElement('a');
@@ -68,7 +68,7 @@ document.addEventListener('scroll', function () {
 document.addEventListener('scroll', function(){
     isUserScrolling();
 }, false);
-//navbar will reappear when scrolling starts again
+//nav bar will reappear when scrolling starts again
 document.addEventListener('scroll', function(){
     header.style.display = "block";
 })
