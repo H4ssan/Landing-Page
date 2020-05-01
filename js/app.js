@@ -28,7 +28,8 @@ function isSectionActive() {
 
 
 //hide nav bar when user stops scrolling
- let timer = null;
+//https://knowledge.udacity.com/questions/125967 - Code from this mentor was used for help in this section
+let timer = null;
 
 function isUserScrolling(){
    
